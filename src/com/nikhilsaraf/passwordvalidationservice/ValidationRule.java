@@ -16,6 +16,9 @@ import java.util.List;
  * @see ValidationSet
  */
 abstract class ValidationRule implements PasswordValidator {
+	// default constructor, does nothing
+	public ValidationRule() {}
+	
 	/**
 	 * Implements the interface's validate() method.
 	 * Avoids having to repeat code around converting the result of a Rule's validation to the interface's specification.
@@ -39,5 +42,5 @@ abstract class ValidationRule implements PasswordValidator {
 	 * @param password
 	 * @return a String with the associated validation error; null if password is valid
 	 */
-	public abstract String performValidation(String password);
+	protected abstract String performValidation(String password);
 }
