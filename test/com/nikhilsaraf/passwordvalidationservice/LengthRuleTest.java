@@ -3,8 +3,6 @@
  */
 package com.nikhilsaraf.passwordvalidationservice;
 
-import junit.framework.Assert;
-
 import org.junit.Test;
 
 /**
@@ -15,37 +13,29 @@ import org.junit.Test;
  * 
  * @author nikhilsaraf
  */
-public class LengthRuleTest {
-	
-	/**
-	 * Helper method that creates the test object, performs validation and verifies output is as expected 
-	 * 
-	 * @param inputPassword
-	 * @param expectedErrorMessage
-	 */
-	private void commonTestHelper(final String inputPassword, final String expectedErrorMessage) {
-		final ValidationRule rule = new LengthRule();
-		final String resultingError = rule.performValidation(inputPassword);
-		Assert.assertEquals("The error message did not match as expected", expectedErrorMessage, resultingError);
+public class LengthRuleTest extends BaseRuleTest {
+	@Override
+	protected Class<? extends ValidationRule> ruleBeingTested() {
+		return LengthRule.class;
 	}
 	
 	@Test
-	public void testTooShortPasswordRejected() {
+	public void testTooShortPasswordRejected() throws Exception {
 		commonTestHelper("1234", LengthRule.tooShortErrorMessage);
 	}
 	
 	@Test
-	public void testTooLongPasswordRejected() {
+	public void testTooLongPasswordRejected() throws Exception {
 		commonTestHelper("1234567890123", LengthRule.tooLongErrorMessage);
 	}
 	
 	@Test
-	public void testShortestLengthPasswordAccepted() {
+	public void testShortestLengthPasswordAccepted() throws Exception {
 		commonTestHelper("12345", null);
 	}
 	
 	@Test
-	public void testLongestLengthPasswordAccepted() {
+	public void testLongestLengthPasswordAccepted() throws Exception {
 		commonTestHelper("123456789012", null);
 	}
 }
