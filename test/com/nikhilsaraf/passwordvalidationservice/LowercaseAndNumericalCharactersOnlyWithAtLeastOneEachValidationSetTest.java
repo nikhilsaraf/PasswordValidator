@@ -5,10 +5,10 @@ import java.util.HashSet;
 import org.junit.Test;
 
 @SuppressWarnings("serial")
-public class LowercaseAndNumericalCharactersOnlyWithAtLeastOneEachTest extends BaseValidationSetTest {
+public class LowercaseAndNumericalCharactersOnlyWithAtLeastOneEachValidationSetTest extends BaseValidationSetTest {
 	@Override
 	protected String getValidationSetName() {
-		return "LowercaseAndNumericalCharactersOnlyWithAtLeastOneEach";
+		return "LowercaseAndNumericalCharactersOnlyWithAtLeastOneEachValidationSet";
 	}
 
 	@Test
@@ -21,8 +21,12 @@ public class LowercaseAndNumericalCharactersOnlyWithAtLeastOneEachTest extends B
 		commonTestHelper("asjkhfkahf", new HashSet<String>(3){{ add(AtLeastOneNumberRule.errorMessage); }});
 	}
 	
+	/**
+	 * Note, length is too short, but it is accepted as length is not a part of this bean
+	 * @throws Exception
+	 */
 	@Test
 	public void testLowercaseAndNumericalCharactersOnlyWithAtLeastOneEachAccepted() throws Exception {
-		commonTestHelper("as3jkhfkahf", new HashSet<String>(1));
+		commonTestHelper("as3", new HashSet<String>(1));
 	}
 }
