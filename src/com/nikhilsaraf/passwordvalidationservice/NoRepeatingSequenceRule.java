@@ -14,11 +14,12 @@ public class NoRepeatingSequenceRule extends ValidationRule {
 	
 	@Override
 	protected String performValidation(String password) {
+		// O(N^2) algorithm
 		for (int i = 0; i < password.length(); i++) {
 			for (int j = i-1; j >= 0; j-=2) {
-				int midIndex = (i+j)/2;
+				int midIndex = (i+j)/2 + 1;
 				final String firstSubsequence = password.substring(j, midIndex);
-				final String secondSubsequence = password.substring(midIndex,i+1);
+				final String secondSubsequence = password.substring(midIndex, i + 1);
 				
 				// compare subsequences for equality
 				if (firstSubsequence.equals(secondSubsequence)) {
