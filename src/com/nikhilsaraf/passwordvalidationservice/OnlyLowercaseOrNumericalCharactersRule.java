@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  *
  */
 public class OnlyLowercaseOrNumericalCharactersRule extends PatternMatchingRule {	
-	private static final Pattern pattern = Pattern.compile("[0-9a-z]+");
+	private static final Pattern pattern = Pattern.compile("^[0-9a-z]+$");
 	protected static final String errorMessage = "Password must contain lowercase or numerical characters only";
 	
 	@Override
